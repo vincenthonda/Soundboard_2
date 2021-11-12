@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     val TAG = "MainActivity"
+
+    val noteMap = HashMap<String, Int>()
+
     lateinit var buttonA : Button
     lateinit var buttonBb : Button
     lateinit var buttonB : Button
@@ -102,6 +105,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private suspend fun playSimpleSong() {
+        playNote(dNote)
+        delay(100)
+        playNote(dNote)
+        delay(100)
+        playNote(dNote)
+        delay(100)
+        playNote(dNote)
+        delay(100)
+        playNote(chNote)
+        delay(100)
+        playNote(cNote)
+        delay(100)
+    }
+
     private fun initializeSoundPool() {
 
         this.volumeControlStream = AudioManager.STREAM_MUSIC
@@ -121,6 +139,19 @@ class MainActivity : AppCompatActivity() {
         fhNote =  soundPool.load(this, R.raw.scalefs, 1)
         gNote =  soundPool.load(this, R.raw.scaleg, 1)
         ghNote =  soundPool.load(this, R.raw.scalegs, 1)
+
+        noteMap["A"] = aNote
+        noteMap["Bb"] = bbNote
+        noteMap["B"] = bNote
+        noteMap["C"] = cNote
+        noteMap["Ch"] = chNote
+        noteMap["D"] = dNote
+        noteMap["Dh"] = dhNote
+        noteMap["E"] = eNote
+        noteMap["F"] = fNote
+        noteMap["Fh"] = fhNote
+        noteMap["G"] = gNote
+        noteMap["Gh"] = ghNote
     }
 
     private fun playNote(noteId : Int) {
